@@ -174,8 +174,6 @@ set selectmode=mouse,key
 " 高亮显示匹配的括号
 "set showmatch
 
-"为C程序提供自动缩进
-"自动补全
 
 
 filetype plugin indent on 
@@ -214,9 +212,9 @@ language messages zh_CN.utf-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-inoremap {} {}
-inoremap { {<CR>}<ESC>O
-inoremap } <c-r>=ClosePair('}')<CR>
+"inoremap {} {}
+"inoremap { {<CR>}<ESC>O
+"inoremap } <c-r>=ClosePair('}')<CR>
 inoremap [ []<ESC>i
 inoremap ] <c-r>=ClosePair(']')<CR>
 "inoremap () ()<ESC>i
@@ -232,3 +230,12 @@ endfunction
 autocmd BufNewFile  *.cpp	0r ~/.vim/head.cpp
 ":autocmd BufNewFile  *.h	0r ~/vim/skeleton.h
 ":autocmd BufNewFile  *.java	0r ~/vim/skeleton.java
+
+" insert template when empty
+autocmd BufEnter *.cpp call LastMod()
+fun LastMod()
+  if line("$") < 2 
+    0r ~/.vim/head.cpp
+  endif
+endfun
+
