@@ -4,8 +4,8 @@ au GuiEnter * set t_vb=
 set lbr
 set mousemodel=popup
 
-au FileType c setlocal dict+=~/.vim/dict/c.dict
-au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+"au FileType c setlocal dict+=~/.vim/dict/c.dict
+"au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
 
 "syntastic相关
 execute pathogen#infect()
@@ -215,22 +215,21 @@ source $VIMRUNTIME/menu.vim
 "inoremap {} {}
 "inoremap { {<CR>}<ESC>O
 "inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-inoremap ] <c-r>=ClosePair(']')<CR>
+"inoremap [ []<ESC>i
+"inoremap ] <c-r>=ClosePair(']')<CR>
 "inoremap () ()<ESC>i
 "inoremap ) <c-r>=ClosePair(')')<CR>
-function! ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endfunction
+"function! ClosePair(char)
+"	if getline('.')[col('.') - 1] == a:char
+"		return "\<Right>"
+" else
+"		return a:char
+"	endif
+"endfunction
 
 autocmd BufNewFile  *.cpp	0r ~/.vim/head.cpp
 ":autocmd BufNewFile  *.h	0r ~/vim/skeleton.h
 ":autocmd BufNewFile  *.java	0r ~/vim/skeleton.java
-
 " insert template when empty
 autocmd BufEnter *.cpp call LastMod()
 fun LastMod()
